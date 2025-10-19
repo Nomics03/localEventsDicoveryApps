@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "78650810203",
+    "project_id": "eventdiscoverapp-3f3f9",
+    "storage_bucket": "eventdiscoverapp-3f3f9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78650810203:android:a716faa373e3ecb00b047e",
+        "android_client_info": {
+          "package_name": "com.adli.eventdiscover"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd2gy2D5Dj10wcHnPqEAVfYEAmvR3UudE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78650810203:android:88f8435a6ca140180b047e",
+        "android_client_info": {
+          "package_name": "com.example.comadlieventdiscover"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd2gy2D5Dj10wcHnPqEAVfYEAmvR3UudE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
