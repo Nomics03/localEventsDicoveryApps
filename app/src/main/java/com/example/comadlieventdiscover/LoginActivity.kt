@@ -42,11 +42,11 @@ class LoginActivity : AppCompatActivity() {
                         val user = auth.currentUser
                         if (user != null && user.email == "admin@eventdiscover.com") {
                             // User is an admin, go to Admin Dashboard
-                            startActivity(Intent(this, AddEditEventActivity::class.java))
-                        } else {
+                            startActivity(Intent(this, SavedActivity::class.java))
+                        } /*else {
                             // User is a regular user, go to Home screen
                             startActivity(Intent(this, EventDetailsActivity::class.java))
-                        }
+                        }*/
                         finish() // Close the login activity so the user can't go back to it
 
                     } else {

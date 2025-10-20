@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Comadlieventdiscover">
         <activity
+            android:name="com.example.comadlieventdiscover.Tickets_past"
+            android:exported="false" />
+        <activity
+            android:name="com.example.comadlieventdiscover.Tickets"
+            android:exported="false" />
+        <activity
             android:name=".bottom_nav_color"
             android:exported="false" />
         <activity
