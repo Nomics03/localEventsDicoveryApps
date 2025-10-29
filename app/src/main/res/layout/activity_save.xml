@@ -89,7 +89,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:selectedItemId="@+id/nav_saved"/> <!-- This line highlights the 'Saved' item -->
+        app:labelVisibilityMode="labeled" /> <!-- This line highlights the 'Saved' item -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

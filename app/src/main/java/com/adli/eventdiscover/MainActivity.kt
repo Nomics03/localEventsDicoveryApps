@@ -17,19 +17,18 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Handler untuk menunggu beberapa saat sebelum memeriksa status log masuk
+        // Handler to wait a few seconds before checking login status
         Handler(Looper.getMainLooper()).postDelayed({
-            // Periksa jika pengguna sudah log masuk
+            // Check if user is already logged in
             if (auth.currentUser != null) {
-                // Jika ya, terus ke HomeActivity (akan kita cipta nanti)
-                // Untuk sekarang, kita akan hantar ke LoginActivity sebagai placeholder
-                // startActivity(Intent(this, HomeActivity::class.java))
-                startActivity(Intent(this, LoginActivity::class.java)) // Placeholder
+                // --- THIS IS THE FIX ---
+                // If yes, go to HomepageActivity
+                startActivity(Intent(this, HomepageActivity::class.java))
             } else {
-                // Jika tidak, pergi ke LoginActivity
+                // If no, go to LoginActivity
                 startActivity(Intent(this, LoginActivity::class.java))
             }
-            finish() // Tutup MainActivity supaya pengguna tidak boleh kembali ke sini
-        }, 2000) // Tunggu 2 saat (2000 milisaat)
+            finish() // Close MainActivity so the user can't go back
+        }, 2000) // Wait 2 seconds
     }
 }

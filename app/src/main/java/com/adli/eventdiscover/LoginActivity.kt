@@ -1,65 +1,65 @@
 package com.adli.eventdiscover
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.adli.eventdiscover.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    // Using ViewBinding for easy access to UI elements
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+
+    // ADD THIS FUNCTION
+    override fun onStart() {
+        super.onStart()
+        // Check if user is already logged in
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // User is already logged in, go to Homepage
+            startActivity(Intent(this, HomepageActivity::class.java))
+            finish() // Close LoginActivity so user can't press "back" to it
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase Authentication
         auth = FirebaseAuth.getInstance()
 
-        // When the Login button is clicked
+        // Handle Login Button Click
         binding.buttonLogin.setOnClickListener {
+            // ... (Your existing login code is perfect, no changes needed here)
             val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
 
-            // Validate input
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Sign in with Firebase
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Login successful, check if user is admin or regular user
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-
-                        val user = auth.currentUser
-                        if (user != null && user.email == "admin@eventdiscover.com") {
-                            // User is an admin, go to Admin Dashboard
-                            startActivity(Intent(this, SavedActivity::class.java))
-                        } /*else {
-                            // User is a regular user, go to Home screen
-                            startActivity(Intent(this, EventDetailsActivity::class.java))
-                        }*/
-                        finish() // Close the login activity so the user can't go back to it
-
+                        val intent = Intent(this, HomepageActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     } else {
-                        // Login failed, show an error message
                         Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                     }
                 }
         }
 
-        // When the "Sign Up" text is clicked
+        // Handle Sign Up Text Click
         binding.textViewSignUp.setOnClickListener {
-            // Go to SignUpActivity
-            startActivity(Intent(this, SignUpActivity::class.java))
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 }
